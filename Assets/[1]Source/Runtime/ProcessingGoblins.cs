@@ -28,7 +28,6 @@ namespace Homebrew
 				cState.current = Tag.StateIdle;
 			};
 
-
 			groupIdle.Add += entity =>
 			{
 				var cState = entity.ComponentState();
@@ -38,8 +37,8 @@ namespace Homebrew
 
 			groupMove.Add += entity =>
 			{
-				var cViewGoblin = entity.ComponentViewGoblin();
-				cViewGoblin.rangeToTarget = 5;
+				var сMove = entity.ComponentMove();
+				сMove.distanceToTarget = 5;
 			};
 
 			groupAttack.Add += entity =>
@@ -71,15 +70,15 @@ namespace Homebrew
 
 			foreach (var entity in groupMove)
 			{
-				var cViewGoblin = entity.ComponentViewGoblin();
+				var сMove = entity.ComponentMove();
 				var cState      = entity.ComponentState();
 				if (frames % 20 == 0)
 				{
-					cViewGoblin.rangeToTarget = cViewGoblin.rangeToTarget.Minus(1);
+					сMove.distanceToTarget = сMove.distanceToTarget.Minus(1);
 
-					Debug.Log(String.Format("Goblin with id {0} moves to target. {1} meters left!", entity, cViewGoblin.rangeToTarget));
+					Debug.Log(String.Format("Goblin with id {0} moves to target. {1} meters left!", entity, сMove.distanceToTarget));
 
-					if (cViewGoblin.rangeToTarget == 0) cState.current = Tag.StateAttack;
+					if (сMove.distanceToTarget == 0) cState.current = Tag.StateAttack;
 				}
 			}
 		}

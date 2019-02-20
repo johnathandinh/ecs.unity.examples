@@ -7,7 +7,7 @@ namespace Homebrew
 	[System.Serializable]
 	public class ComponentViewGoblin : IComponent
 	{
-		public int rangeToTarget = 0;
+		 
 	}
 
 	public static class ExtensionComponentViewGoblin

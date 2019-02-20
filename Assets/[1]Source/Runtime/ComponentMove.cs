@@ -7,7 +7,7 @@ namespace Homebrew
 	[System.Serializable]
 	public class ComponentMove : IComponent
 	{
-		
+		public int distanceToTarget = 0;
 	}
 
 	public static class ExtensionComponentMove
