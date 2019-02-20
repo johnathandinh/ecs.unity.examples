@@ -45,10 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: -1
   conditionEnabled: 0
-  prefabID: 0
+  prefabID: -1
   pool: 0
-  componentViewGoblin:
-    rangeToTarget: 0
   componentWeapon:
     name: Bone Crasher
   componentState:
