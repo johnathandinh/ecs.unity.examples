@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Pixeye\.Rider2018.2\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\Pixeye\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Pixeye\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_Actors-Examples.-291124227.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Pixeye\Projects\Actors-Examples" t="IncludeRecursive">
+      <e p="Actors-Examples.sln" t="IncludeFlat" />
+      <e p="ASM-Framework.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="[0]Framework" t="Include">
+          <e p="Common" t="Include">
+            <e p="-Install" t="Include">
+              <e p="install.txt" t="Include" />
+            </e>
+            <e p="LibConsole" t="Include">
+              <e p="CommandsConsole.cs" t="Include" />
+              <e p="ComponentConsole.cs" t="Include" />
+              <e p="PluggableConsole.cs" t="Include" />
+              <e p="ProcessingConsole.cs" t="Include" />
+            </e>
+            <e p="LibLinker" t="Include">
+              <e p="Editor" t="Include">
+                <e p="Homebrew.Framework.Linker.Editor.asmdef" t="Include" />
+                <e p="Symlinks.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Homebrew.Framework.asmdef" t="Include" />
+          <e p="Runtime" t="Include">
+            <e p="Attributes" t="Include">
+              <e p="BindAttribute.cs" t="Include" />
+              <e p="DataAttribute.cs" t="Include" />
+              <e p="EnumFlagAttribute.cs" t="Include" />
+              <e p="FoldoutGroupAttribute.cs" t="Include" />
+              <e p="GroupByAttribute.cs" t="Include" />
+              <e p="GroupExclude.cs" t="Include" />
+              <e p="InfoBoxAttribute.cs" t="Include" />
+              <e p="ReadOnlyAttribute.cs" t="Include" />
+              <e p="RequireAttribute.cs" t="Include" />
+              <e p="RequireTagsAttribute.cs" t="Include" />
+              <e p="TagFieldAttribute.cs" t="Include" />
+              <e p="TagFilterAttribute.cs" t="Include" />
+            </e>
+            <e p="Data" t="Include">
+              <e p="ComponentObject.cs" t="Include" />
+              <e p="ComponentSubscriber.cs" t="Include" />
+              <e p="DataBaseMenu.cs" t="Include" />
+              <e p="DataGame.cs" t="Include" />
+              <e p="EngineSettings.cs" t="Include" />
+              <e p="EntityState.cs" t="Include" />
+              <e p="Pluggable.cs" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="CreateSceneWindow.cs" t="Include" />
+              <e p="Drawers" t="Include">
+                <e p="InfoBoxDrawer.cs" t="Include" />
+                <e p="TagFilterPropertyDrawer.cs" t="Include" />
+              </e>
+              <e p="EditorOverride.cs" t="Include" />
+              <e p="EnumFlagsAttributeDrawer.cs" t="Include" />
+              <e p="FindMissingScriptsRecursively.cs" t="Include" />
+              <e p="Homebrew.Framework.Editor.asmdef" t="Include" />
+              <e p="ProcessingEditorBlueprints.cs" t="Include" />
+              <e p="ProcessingEditorFactories.cs" t="Include" />
+              <e p="ProcessingEditorSamples.cs" t="Include" />
+              <e p="SceneProcessors" t="Include">
+                <e p="ObjectUploader.cs" t="Include" />
+                <e p="PostProcessorDelete.cs" t="Include" />
+                <e p="SceneGenerator.cs" t="Include" />
+                <e p="SceneReturnClick.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Enums" t="Include">
+              <e p="ComponentType.cs" t="Include" />
+              <e p="WorldParenters.cs" t="Include" />
+            </e>
+            <e p="extensions" t="Include">
+              <e p="FrameworkExtensions.cs" t="Include" />
+              <e p="ObjectExtensions.cs" t="Include" />
+            </e>
+            <e p="HRProfile" t="Include">
+              <e p="HRProfile.cs" t="Include" />
+            </e>
+            <e p="Interfaces" t="Include">
+              <e p="IAwake.cs" t="Include" />
+              <e p="IComponent.cs" t="Include" />
+              <e p="IEnable.cs" t="Include" />
+              <e p="IEntity.cs" t="Include" />
+              <e p="IKernel.cs" t="Include" />
+              <e p="ILocalStorage.cs" t="Include" />
+              <e p="IManualDeploy.cs" t="Include" />
+              <e p="IPopulate.cs" t="Include" />
+              <e p="IRandom.cs" t="Include" />
+              <e p="IReceive.cs" t="Include" />
+              <e p="IRecieveTags.cs" t="Include" />
+              <e p="IRequire.cs" t="Include" />
+              <e p="IRequireStarter.cs" t="Include" />
+              <e p="ISetup.cs" t="Include" />
+              <e p="IStorage.cs" t="Include" />
+              <e p="ITick.cs" t="Include" />
+              <e p="ITickFixed.cs" t="Include" />
+              <e p="ITickLate.cs" t="Include" />
+              <e p="IUpdateble.cs" t="Include" />
+            </e>
+            <e p="LibAnimations" t="Include">
+              <e p="BaseStateMachineBehavior.cs" t="Include" />
+            </e>
+            <e p="LibBlueprints" t="Include">
+              <e p="BlueprintTemplate.txt" t="Include" />
+              <e p="FactoryTemplate.txt" t="Include" />
+              <e p="SampleTemplate.txt" t="Include" />
+              <e p="Template.cs" t="Include" />
+            </e>
+            <e p="LibEcs" t="Include">
+              <e p="ComponentRelease.cs" t="Include" />
+              <e p="Composition.cs" t="Include" />
+              <e p="GroupBase.cs" t="Include" />
+              <e p="ProcessingEntities.cs" t="Include" />
+            </e>
+            <e p="LibMisc" t="Include">
+              <e p="Factory.cs" t="Include" />
+              <e p="FactoryBase.cs" t="Include" />
+              <e p="FastComparable.cs" t="Include" />
+              <e p="FastDict.cs" t="Include" />
+              <e p="FastString.cs" t="Include" />
+            </e>
+            <e p="LibMono" t="Include">
+              <e p="Actor.cs" t="Include" />
+              <e p="ActorExtended.cs" t="Include" />
+              <e p="Feature.cs" t="Include" />
+              <e p="MonoCached.cs" t="Include" />
+              <e p="MonoEntity.cs" t="Include" />
+              <e p="Script.cs" t="Include" />
+              <e p="Storage.cs" t="Include" />
+              <e p="TagBase.cs" t="Include" />
+              <e p="Tags.cs" t="Include" />
+            </e>
+            <e p="LibPools" t="Include">
+              <e p="FrameworkExtensionsPool.cs" t="Include" />
+              <e p="IPoolable.cs" t="Include" />
+              <e p="Pool.cs" t="Include" />
+              <e p="PoolContainer.cs" t="Include" />
+              <e p="PoolNode.cs" t="Include" />
+              <e p="ProcessingPool.cs" t="Include" />
+              <e p="ProcessingPools.cs" t="Include" />
+            </e>
+            <e p="LibSingleton" t="Include">
+              <e p="Singleton.cs" t="Include" />
+              <e p="Toolbox.cs" t="Include" />
+            </e>
+            <e p="LibStarter" t="Include">
+              <e p="SceneField.cs" t="Include" />
+              <e p="Starter.cs" t="Include" />
+              <e p="StarterKernel.cs" t="Include" />
+            </e>
+            <e p="LibTime" t="Include">
+              <e p="ProcessingTimer.cs" t="Include" />
+              <e p="Time.cs" t="Include" />
+              <e p="Timer.cs" t="Include" />
+            </e>
+            <e p="Processings" t="Include">
+              <e p="Box.cs" t="Include" />
+              <e p="ProcessingBase.cs" t="Include" />
+              <e p="ProcessingBehaviorAttributes.cs" t="Include" />
+              <e p="ProcessingGroupAttributes.cs" t="Include" />
+              <e p="ProcessingRelease.cs" t="Include" />
+              <e p="ProcessingResources.cs" t="Include" />
+              <e p="ProcessingScene.cs" t="Include" />
+              <e p="ProcessingSceneLoad.cs" t="Include" />
+              <e p="ProcessingSignals.cs" t="Include" />
+              <e p="ProcessingTags.cs" t="Include" />
+              <e p="ProcessingUpdate.cs" t="Include" />
+            </e>
+            <e p="Signals" t="Include">
+              <e p="SignalTimeScale.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="[1]Source" t="Include">
+          <e p="Common" t="Include">
+            <e p="ActorSerialized.cs" t="Include" />
+            <e p="DataGameSession.cs" t="Include" />
+            <e p="DataGameSettings.cs" t="Include" />
+            <e p="Game.cs" t="Include" />
+            <e p="TagNode.cs" t="Include" />
+            <e p="TemplateActor.cs" t="Include" />
+            <e p="TemplateSerialized.cs" t="Include" />
+          </e>
+          <e p="Homebrew.Game.asmdef" t="Include" />
+          <e p="Runtime" t="Include">
+            <e p="ActorGoblin.cs" t="Include" />
+            <e p="ComponentMove.cs" t="Include" />
+            <e p="ComponentState.cs" t="Include" />
+            <e p="ComponentViewGoblin.cs" t="Include" />
+            <e p="ComponentWeapon.cs" t="Include" />
+            <e p="ProcessingGoblins.cs" t="Include" />
+            <e p="StarterStateMachine.cs" t="Include" />
+            <e p="Tag.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Homebrew.Framework.Editor.csproj" t="IncludeRecursive" />
+      <e p="Homebrew.Framework.Linker.Editor.csproj" t="IncludeRecursive" />
+      <e p="Homebrew.Game.csproj" t="IncludeRecursive" />
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
