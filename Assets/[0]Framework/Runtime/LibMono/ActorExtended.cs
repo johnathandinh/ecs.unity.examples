@@ -55,7 +55,7 @@ namespace Homebrew
 			}
 			#endif
 
-			if (Starter.initialized == false)
+			if (Starter.initialized == false) return;
 			if (conditionManualDeploy) return;
 			
 				ProcessingUpdate.Default.Add(this);
