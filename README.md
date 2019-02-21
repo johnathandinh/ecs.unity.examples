@@ -14,5 +14,5 @@
 
 # Patterns 
 
-Scene StateMachine ECS <- Describes one of the possible ways of creating a finite state machine with ECS.
-Scene Scripts <- Lifehacks and ways of using framework
+- Scene StateMachine ECS <- Describes one of the possible ways of creating a finite state machine with ECS.
+- Scene Scripts <- Lifehacks and ways of using framework
