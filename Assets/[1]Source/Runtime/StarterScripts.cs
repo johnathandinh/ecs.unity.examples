@@ -25,7 +25,7 @@ namespace Homebrew
 				var cObject  = composer.Add<ComponentObject>();
 				cPlayer.name = playerNames.Random();
 				cObject.transform = this.Populate("Obj Player", Vector3.zero, Quaternion.identity);
-				cObject.transform.AddGet<MonoEntity>();
+				cObject.transform.AddGet<MonoEntity>().entity = composer.entity;
 				composer.Deploy();
 			}
 
