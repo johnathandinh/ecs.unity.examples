@@ -13,6 +13,6 @@ namespace Homebrew
 		/// </summary>
 		protected override void Setup() { Add<ProcessingGoblins>(); }
 
-		protected override void PostSetup() { this.Populate("obj goblin", Vector3.zero, Quaternion.identity); }
+		protected override void PostSetup() { this.Populate("Obj Goblin", Vector3.zero, Quaternion.identity); }
 	}
 }
