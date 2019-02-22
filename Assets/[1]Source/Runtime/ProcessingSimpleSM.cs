@@ -49,6 +49,7 @@ namespace Homebrew
 		{
 			Debug.Log(String.Format("Turret with ID {0} : IDLE", entity));
 			Timer.Add(1.0f, () => { entity.ComponentTurret().state = this.Between(Tag.StateMove, Tag.StateAttack); });
+			
 		}
 
 		void HandleStateMove(int entity)
