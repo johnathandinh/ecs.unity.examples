@@ -53,6 +53,7 @@ namespace Homebrew
 		public void Tick()
 		{
 			var frames = Time.frame;
+			
 			// process all entities that are defined in the groupBrains
 			foreach (var entity in groupBrains)
 			{
@@ -70,8 +71,8 @@ namespace Homebrew
 
 			foreach (var entity in groupMove)
 			{
-				var сMove = entity.ComponentMove();
-				var cState      = entity.ComponentState();
+				var сMove  = entity.ComponentMove();
+				var cState = entity.ComponentState();
 				if (frames % 20 == 0)
 				{
 					сMove.distanceToTarget = сMove.distanceToTarget.Minus(1);
