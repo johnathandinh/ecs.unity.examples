@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 322678236}
   - component: {fileID: 322678235}
   m_Layer: 0
-  m_Name: '[KERNEL]'
+  m_Name: -- SETUP KERNEL --
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
