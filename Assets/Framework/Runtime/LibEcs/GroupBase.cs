@@ -93,13 +93,18 @@ namespace Pixeye
 		{
 			if (Add != null)
 			{
-				if (ProcessingEntities.actionsOnAdd.Length <= ProcessingEntities.actionsOnAddLength)
+				DelayAddEvent ev;
+				ev.action = Add;
+				ev.entity = entities[indexLast];
+
+				if (ProcessingActorsAdd.AddEvents.Length <= ProcessingActorsAdd.AddEventsLength)
 				{
-					int len = ProcessingEntities.actionsOnAddLength << 1;
-					Array.Resize(ref ProcessingEntities.actionsOnAdd, len);
+					int len = ProcessingActorsAdd.AddEventsLength << 1;
+					Array.Resize(ref ProcessingActorsAdd.AddEvents, len);
 				}
 
-				ProcessingEntities.actionsOnAdd[ProcessingEntities.actionsOnAddLength++] = Add;
+
+				ProcessingActorsAdd.AddEvents[ProcessingActorsAdd.AddEventsLength++] = ev;
 			}
 		}
 
