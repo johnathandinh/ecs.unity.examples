@@ -32,7 +32,7 @@ namespace Pixeye
 			if (Input.GetKeyDown(KeyCode.W))
 			{
 				// groups can be global static!
-				var players = ProcessingPlayer.groupPlayers;
+				var players = ProcessingPlayer.group_players;
 
 				foreach (var entity in players)
 				{

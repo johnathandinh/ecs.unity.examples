@@ -8,21 +8,21 @@ namespace Pixeye
 {
 	public class ProcessingPlayer : ProcessingBase, ITick
 	{
-		public static Group<ComponentPlayer, ComponentObject> groupPlayers;
-	    Group<ComponentPlayer, ComponentWeapon, ComponentObject> groupPlayersWithWeapon;
+		public static Group<ComponentPlayer, ComponentObject> group_players;
+	  public Group<ComponentPlayer, ComponentWeapon, ComponentObject> group_players_armed;
 
 		public ProcessingPlayer() { }
 
 		public void Tick()
 		{
-			foreach (var entity in groupPlayers)
+			foreach (var entity in group_players)
 			{
 				var cPlayer = entity.ComponentPlayer();
 
 				Debug.Log(string.Format("{0} with id {1}", cPlayer.name, entity));
 			}
 
-			foreach (var entity in groupPlayersWithWeapon)
+			foreach (var entity in group_players_armed)
 			{
 				var cPlayer = entity.ComponentPlayer();
 				var cWeapon = entity.ComponentWeapon();

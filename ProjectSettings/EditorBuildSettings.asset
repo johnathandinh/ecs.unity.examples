@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Scene Collisions.unity
+    guid: 7bd60c2eded65f14998e13df92215a59
+  - enabled: 1
     path: Assets/Scenes/Scene StateMachine ECS.unity
     guid: d5bcc2e548e15644797300e2078aa57b
   - enabled: 1
@@ -14,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene Scripts.unity
     guid: 516fe01569a38ec49a19dbc865ea684e
-  - enabled: 1
-    path: Assets/Scenes/Scene Game.unity
-    guid: 359bd7fcfc21e8c46af1f25848efaabb
   - enabled: 1
     path: Assets/Scenes/Scene Camera.unity
     guid: 0ea0fd5fb6f911b4b973aa187ead4297

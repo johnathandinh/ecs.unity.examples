@@ -12,7 +12,7 @@ namespace Pixeye
 
 	public class ProcessingSimpleSM : ProcessingBase, ITick
 	{
-		Group<ComponentTurret> groupTurrets;
+		public Group<ComponentTurret> group_turrets;
 
 		Dictionary<int, State> stateMap = new Dictionary<int, State>(3, new FastComparable());
 
@@ -32,7 +32,7 @@ namespace Pixeye
 
 		public void Tick()
 		{
-			foreach (var entity in groupTurrets)
+			foreach (var entity in group_turrets)
 			{
 				var cTurret = entity.ComponentTurret();
 

@@ -9,39 +9,39 @@ namespace Pixeye
 {
 	public class ProcessingGoblins : ProcessingBase, ITick
 	{
-		Group<ComponentViewGoblin, ComponentState> groupBrains;
+		public Group<ComponentViewGoblin, ComponentState> group_brains;
 
 		[GroupBy(Tag.StateAttack)]
-		Group<ComponentViewGoblin, ComponentWeapon> groupAttack;
+		public Group<ComponentViewGoblin, ComponentWeapon> group_attack;
 
 		[GroupBy(Tag.StateMove)]
-		Group<ComponentViewGoblin, ComponentMove> groupMove;
+		public Group<ComponentViewGoblin, ComponentMove> group_move;
 
 		[GroupBy(Tag.StateIdle)]
-		Group<ComponentViewGoblin> groupIdle;
+		public Group<ComponentViewGoblin> group_idle;
 
 		public ProcessingGoblins()
 		{
-			groupBrains.Add += entity =>
+			group_brains.Add += entity =>
 			{
 				var cState = entity.ComponentState();
 				cState.current = Tag.StateIdle;
 			};
 
-			groupIdle.Add += entity =>
+			group_idle.Add += entity =>
 			{
 				var cState = entity.ComponentState();
 				Timer.Add(1f, () => { cState.current = Tag.StateMove; });
 				Debug.Log(String.Format("Goblin with id {0} is waiting !", entity));
 			};
 
-			groupMove.Add += entity =>
+			group_move.Add += entity =>
 			{
 				var сMove = entity.ComponentMove();
 				сMove.distanceToTarget = 5;
 			};
 
-			groupAttack.Add += entity =>
+			group_attack.Add += entity =>
 			{
 				var cWeapon = entity.ComponentWeapon();
 				var cState  = entity.ComponentState();
@@ -55,7 +55,7 @@ namespace Pixeye
 			var frames = Time.frame;
 			
 			// process all entities that are defined in the groupBrains
-			foreach (var entity in groupBrains)
+			foreach (var entity in group_brains)
 			{
 				var cState = entity.ComponentState();
 
@@ -69,7 +69,7 @@ namespace Pixeye
 				}
 			}
 
-			foreach (var entity in groupMove)
+			foreach (var entity in group_move)
 			{
 				var сMove  = entity.ComponentMove();
 				var cState = entity.ComponentState();
