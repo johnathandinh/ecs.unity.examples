@@ -2,24 +2,39 @@
 // Contacts : Pixeye - info@pixeye.games
 //     Date : 2/20/2019 
 
+using Pixeye.Framework;
+using UnityEngine;
+
 namespace Pixeye
 {
 	[System.Serializable]
 	public class ComponentViewGoblin : IComponent
 	{
-		 
-	}
 
-	public static class ExtensionComponentViewGoblin
-	{
-		public static ComponentViewGoblin ComponentViewGoblin(this int entity) { return Storage<ComponentViewGoblin>.Instance.components[entity]; }
-
-		public static bool TryGetComponentViewGoblin(this int entity, out ComponentViewGoblin component)
+		public void Copy(int entityID)
 		{
-			component = Storage<ComponentViewGoblin>.Instance.TryGet(entity);
-			return component != null;
+			var component = Storage<ComponentViewGoblin>.Instance.GetFromStorage(entityID);
+		}
+		public void Dispose()
+		{
+	 
 		}
 
-		public static bool HasComponentViewGoblin(this int entity) { return Storage<ComponentViewGoblin>.Instance.HasComponent(entity); }
+	}
+
+	public static partial class HelperComponents
+	{
+
+		[RuntimeInitializeOnLoadMethod]
+		static void ComponentViewGoblinInit()
+		{
+			Storage<ComponentViewGoblin>.Instance.Creator = () => { return new ComponentViewGoblin(); };
+		}
+
+		public static ComponentViewGoblin ComponentViewGoblin(in this ent entity)
+		{
+			return Storage<ComponentViewGoblin>.Instance.components[entity];
+		}
+
 	}
 }

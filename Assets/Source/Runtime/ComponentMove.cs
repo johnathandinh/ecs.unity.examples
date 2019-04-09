@@ -2,24 +2,39 @@
 // Contacts : Pixeye - info@pixeye.games
 //     Date : 2/20/2019 
 
+using Pixeye.Framework;
+using UnityEngine;
+
 namespace Pixeye
 {
 	[System.Serializable]
 	public class ComponentMove : IComponent
 	{
+
 		public int distanceToTarget = 0;
-	}
-
-	public static class ExtensionComponentMove
-	{
-		public static ComponentMove ComponentMove(this int entity) { return Storage<ComponentMove>.Instance.components[entity]; }
-
-		public static bool TryGetComponentMove(this int entity, out ComponentMove component)
+		public void Copy(int entityID)
 		{
-			component = Storage<ComponentMove>.Instance.TryGet(entity);
-			return component != null;
+			var component = Storage<ComponentMove>.Instance.GetFromStorage(entityID);
+		}
+		public void Dispose()
+		{
 		}
 
-		public static bool HasComponentMove(this int entity) { return Storage<ComponentMove>.Instance.HasComponent(entity); }
+	}
+
+	public static partial class HelperComponents
+	{
+
+		[RuntimeInitializeOnLoadMethod]
+		static void ComponentMoveInit()
+		{
+			Storage<ComponentMove>.Instance.Creator = () => { return new ComponentMove(); };
+		}
+
+		public static ComponentMove ComponentMove(in this ent entity)
+		{
+			return Storage<ComponentMove>.Instance.components[entity];
+		}
+
 	}
 }

@@ -2,6 +2,7 @@
 // Contacts : Pix - info@pixeye.games
 //     Date : 3/7/2019 
 
+using Pixeye.Framework;
 using UnityEngine;
 
 namespace Pixeye

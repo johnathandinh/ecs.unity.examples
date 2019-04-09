@@ -2,33 +2,41 @@
 // Contacts : Pix - info@pixeye.games
 //     Date : 3/7/2019 
 
+using Pixeye.Framework;
+using UnityEngine;
+
 namespace Pixeye
 {
-   [System.Serializable]
-   public class ComponentAlarm : IComponent
-   {
-       public int target = -1;
-       public float radius;
-   }
-    
-  public static class ExtensionComponentAlarm
-    {
-        public static ComponentAlarm ComponentAlarm(this int entity)
-        {
-            return Storage<ComponentAlarm>.Instance.components[entity];
-        }
+	[System.Serializable]
+	public class ComponentAlarm : IComponent
+	{
 
-        public static bool TryGetComponentAlarm(this int entity, out ComponentAlarm component)
-        {
-            component = Storage<ComponentAlarm>.Instance.TryGet(entity);
-            return component != null;
-        }
+		public int target = -1;
+		public float radius;
 
-        public static bool HasComponentAlarm(this int entity)
-        {
-            return Storage<ComponentAlarm>.Instance.HasComponent(entity);
-        }
-    }
-    
-    
+		public void Copy(int entityID)
+		{
+			var component = Storage<ComponentAlarm>.Instance.GetFromStorage(entityID);
+		}
+		public void Dispose()
+		{
+		}
+
+	}
+
+	public static partial class HelperComponents
+	{
+
+		[RuntimeInitializeOnLoadMethod]
+		static void ComponentAlarmInit()
+		{
+			Storage<ComponentAlarm>.Instance.Creator = () => { return new ComponentAlarm(); };
+		}
+
+		public static ComponentAlarm ComponentAlarm(in this ent entity)
+		{
+			return Storage<ComponentAlarm>.Instance.components[entity];
+		}
+
+	}
 }

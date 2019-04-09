@@ -1,70 +1,56 @@
 //  Project  : ACTORS
 //  Contacts : Pixeye - ask@pixeye.games
 
- 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
 using UnityEngine;
 
-namespace Pixeye
+namespace Pixeye.Framework
 {
 	/// <summary>
 	/// <para>Links a game object with specific entity.</para>
 	/// </summary>
-	public class MonoEntity : MonoBehaviour
-	{ 
-		 
-		[FoldoutGroup("Main"), TagFilter(typeof(Pool))]
-		public int pool = -1;
-		[FoldoutGroup("Main"),ReadOnly]
-		public int entity = -1;
-		[FoldoutGroup("Main"),ReadOnly]
-		public bool conditionEnabled;
+	public class MonoEntity : MonoBehaviour, IEntity
+	{
 
-		bool conditionInitialized = false;
-		
- 		public virtual void OnEnable()
-    	{
-	        if (!conditionInitialized)
-	        {
-		        conditionInitialized = true;
-		        return;
-	        }
- 		conditionEnabled = true;
- 		ProcessingEntities.Default.CheckGroups(entity, true);
- 		}
- 
-		public virtual void OnDisable()
-		{
-			conditionEnabled = false;
-			ProcessingEntities.Default.CheckGroups(entity, false);
-		}
-		
-		protected void OnDestroy()
-		{
-			int len = Storage.all.Count;
+		#if UNITY_EDITOR
+		[FoldoutGroup("Main"), SerializeField, ReadOnly]
+		public int _entity = -1;
+		#endif
 
-			for (int j = 0; j < len; j++)
-				Storage.all[j].RemoveNoCheck(entity);
+		[HideInInspector]
+		public ent entity = -1;
 
-			Tags.Clear(entity);
-			ProcessingEntities.prevID.Push(entity);
-		}
-		
-		/// <summary>
-		/// <para>Destroys the object. If the poolID is defined, deactivates the object instead.</para>
-		/// </summary>
-		public void Release()
+		bool conditionInitialized;
+
+		public virtual void OnEnable()
 		{
-	 
-			if (pool == Pool.None)
+			if (!conditionInitialized)
 			{
-				Destroy(gameObject, 0.03f);
+				conditionInitialized = true;
 				return;
 			}
 
-			gameObject.Release(pool);
+			CoreEntity.isAlive[entity] = true;
+			CoreEntity.Delayed.Set(entity, 0, CoreEntity.Delayed.Action.Activate);
 		}
+
+		public virtual void OnDisable()
+		{
+			CoreEntity.isAlive[entity] = false;
+			CoreEntity.Delayed.Set(entity, 0, CoreEntity.Delayed.Action.Deactivate);
+		}
+
+		public void Release()
+		{
+			entity.Release();
+		}
+
+		public ref readonly ent GetEntity()
+		{
+			return ref entity;
+		}
+
 	}
 }

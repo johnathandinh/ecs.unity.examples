@@ -2,11 +2,13 @@
 //  Contacts : Pixeye - info@pixeye.games 
 //      Date : 8/16/2018
 
+using Pixeye.Framework;
 
 namespace Pixeye
 {
 	public static class Tag
 	{
+
 		/// Tags are used to define object states.
 		/// All tags are written to Tag class.
 		/// A good practice is to use #region with the logical name of the state groups and showing what numbers are reserved for the states.
@@ -28,5 +30,6 @@ namespace Pixeye
 		public const int StateMove = 2;
 
 		#endregion
+
 	}
 }

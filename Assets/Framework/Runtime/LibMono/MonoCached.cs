@@ -12,7 +12,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 
-namespace Pixeye
+namespace Pixeye.Framework
 {
 	public abstract class MonoCached : MonoBehaviour, IRequireStarter
 	{
@@ -27,7 +27,7 @@ namespace Pixeye
 		void Awake()
 		{
 			selfTransform = transform;
-			conditionSignals = ProcessingSignals.Check(this);
+			conditionSignals = ProcessorSignals.Check(this);
 			if (Starter.initialized == false) return;
 			Setup();
 			
@@ -42,22 +42,22 @@ namespace Pixeye
 			HandleEnable();
 
 			if (conditionSignals)
-				ProcessingSignals.Default.Add(this);
+				ProcessorSignals.Default.Add(this);
 
-			ProcessingUpdate.Default.Add(this);
+			ProcessorUpdate.Default.Add(this);
 		}
 
 		void OnDisable()
 		{
 			if (conditionSignals)
-				ProcessingSignals.Default.Remove(this);
-			ProcessingUpdate.Default.Remove(this);
+				ProcessorSignals.Default.Remove(this);
+			ProcessorUpdate.Default.Remove(this);
 
 			HandleDisable();
 		}
 
 
-		public virtual void SetupAfterStarter()
+		public virtual void AwakeAfterStarter()
 		{
 			Setup();
 			OnEnable();

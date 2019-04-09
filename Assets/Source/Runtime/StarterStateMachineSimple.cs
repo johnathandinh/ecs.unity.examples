@@ -2,6 +2,8 @@
 // Contacts : Pixeye - ask@pixeye.games
 //     Date : 2/22/2019 
 
+using Pixeye.Framework;
+
 namespace Pixeye
 {
 	public class StarterStateMachineSimple : Starter
@@ -11,7 +13,7 @@ namespace Pixeye
 		/// </summary>
 		protected override void Setup()
 		{
-			Add<ProcessingSimpleSM>();
+			Add<ProcessorSimpleSM>();
 			
 		}
 	}
