@@ -31,6 +31,7 @@ namespace Pixeye
 				var cPlayer = entity.Add<ComponentPlayer>();
 				cPlayer.name = playerNames.Random();
 
+				
 //				var composer = new EntityComposer(2);
 //				var cPlayer = composer.Add<ComponentPlayer>();
 //				var cObject = composer.Add<ComponentObject>();
