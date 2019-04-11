@@ -6,7 +6,7 @@ namespace Pixeye.Framework
 	public sealed class EntityComposer
 	{
 
-		internal ent entity;
+		public ent entity;
 		internal int entityID;
 		public static EntityComposer Default = new EntityComposer();
 
@@ -22,6 +22,11 @@ namespace Pixeye.Framework
 			return Storage<T>.Instance.GetFromStorage(entityID);
 		}
 
+		public void Deploy()
+		{
+			CoreEntity.Delayed.Set(entity, 0, CoreEntity.Delayed.Action.Activate);
+		}
+		
 		public void Deploy(int tag)
 		{
 			entity.AddLater(tag);
@@ -42,6 +47,7 @@ namespace Pixeye.Framework
 		public static EntityComposer Modify(in this ent entity)
 		{
 			EntityComposer.Default.entity = entity;
+			EntityComposer.Default.entityID = entity.id;
 			return EntityComposer.Default;
 		}
 

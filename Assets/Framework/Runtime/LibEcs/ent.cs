@@ -56,7 +56,7 @@ namespace Pixeye.Framework
 			return new ent(id, age);
 		}
 
-		public static ent CreateFrom(in string prefabID, bool pooled = false)
+		public static ent CreateFor(in string prefabID, bool pooled = false)
 		{
 			int id;
 			byte age = 0;
@@ -75,7 +75,7 @@ namespace Pixeye.Framework
 				entityStackLength--;
 			}
 			else
-				id = ++lastID;
+				id = lastID++;
 
 			CoreEntity.SetupWithTransform(id, pooled);
 			if (pooled) CoreEntity.transforms[id] = id.Spawn(Pool.Entities, prefabID);
@@ -83,7 +83,8 @@ namespace Pixeye.Framework
 
 			return new ent(id, age);
 		}
-		public static ent CreateFrom(GameObject prefab, bool pooled = false)
+
+		public static ent CreateFor(GameObject prefab, bool pooled = false)
 		{
 			int id;
 			byte age = 0;
@@ -102,7 +103,7 @@ namespace Pixeye.Framework
 				entityStackLength--;
 			}
 			else
-				id = ++lastID;
+				id = lastID++;
 
 			CoreEntity.SetupWithTransform(id, pooled);
 			if (pooled) CoreEntity.transforms[id] = id.Spawn(Pool.Entities, prefab);
@@ -111,7 +112,7 @@ namespace Pixeye.Framework
 			return new ent(id, age);
 		}
 
-		public static ent CreateFrom(in bpt blueprintKey, bool pooled = false)
+		public static ent CreateFor(in bpt blueprintKey, bool pooled = false)
 		{
 			int id;
 			byte age = 0;
@@ -130,7 +131,7 @@ namespace Pixeye.Framework
 				entityStackLength--;
 			}
 			else
-				id = ++lastID;
+				id = lastID++;
 
 			var blueprint = BlueprintEntity.storage[blueprintKey.id];
 
@@ -161,16 +162,13 @@ namespace Pixeye.Framework
 
 			var entity = new ent(id, age);
 
-			#if UNITY_EDITOR
 			if (blueprint.refType == RefType.EntityMono)
 				entity.AddMonoReference();
-			#endif
 
-			 
-			
-			entity.AddLater(blueprint.tags);
+			if (blueprint.tags.Length > 0)
+				entity.AddLater(blueprint.tags);
 			CoreEntity.Delayed.Set(entity, 0, CoreEntity.Delayed.Action.Activate);
-	 
+
 			return entity;
 		}
 
@@ -236,9 +234,9 @@ namespace Pixeye.Framework
 
 		public void Release()
 		{
+			CoreEntity.Delayed.Set(this, 0, CoreEntity.Delayed.Action.Kill);
 			CoreEntity.isAlive[id] = false;
-			 CoreEntity.Delayed.Set(this, 0, CoreEntity.Delayed.Action.Kill);
-			 CoreEntity.entitiesCount--;
+			CoreEntity.entitiesCount--;
 		}
 
 		public bool Equals(ent other)

@@ -98,11 +98,12 @@ namespace Pixeye.Framework
 		{
 			ref var transforms = ref CoreEntity.transforms;
 			var entityID = entity.id;
-			if (entityID >= counter)
+			if (entityID >= transforms.Length)
 			{
 				var l = entityID << 1;
 				Array.Resize(ref transforms, l);
 			}
+	 
 			transforms[entityID] = instance;
 		}
 
@@ -148,6 +149,7 @@ namespace Pixeye.Framework
 
 		public static T Add<T>(in this ent entity) where T : IComponent, new()
 		{
+			 
 			var storage = Storage<T>.Instance;
 
 			var entityID = entity.id;
@@ -313,7 +315,7 @@ namespace Pixeye.Framework
 				Kill,
 				KillFinalize,
 				Activate,
-				Deactivate,
+				Deactivate 
 
 			}
 

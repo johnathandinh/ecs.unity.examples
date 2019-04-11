@@ -22,7 +22,7 @@ namespace Pixeye.Framework
 				ref var operation = ref CoreEntity.Delayed.operations[i];
 				ref var entity = ref operation.entity;
 				var entityID = entity.id;
-	 
+
 				var components = Storage.all[operation.arg];
 
 				switch (operation.action)
@@ -71,7 +71,18 @@ namespace Pixeye.Framework
 
 						for (int j = 0; j < length; j++)
 						{
-							CoreEntity.Delayed.Set(entity, componentsToKill.GetComponent(j), CoreEntity.Delayed.Action.Remove);
+							var c = componentsToKill.GetComponent(j);
+							var generationRemoveOnKill = Storage.generations[c];
+							var maskRemoveOnKill = Storage.masks[c];
+
+							CoreEntity.generations[entityID, generationRemoveOnKill] &= ~maskRemoveOnKill;
+							var storages = Storage.all[c];
+
+							for (int l = 0; l < storages.lenOfGroups; l++)
+							{
+								var group = storages.groupsOfInterest[l];
+								group.TryRemove(entityID);
+							}
 						}
 
 						CoreEntity.components[entityID].Clear();
@@ -92,8 +103,7 @@ namespace Pixeye.Framework
 							group.TryRemove(entityID);
 						}
 
-						if (CoreEntity.isAlive[entityID])
-							CoreEntity.components[entityID].Remove(operation.arg);
+						CoreEntity.components[entityID].Remove(operation.arg);
 						break;
 
 					case CoreEntity.Delayed.Action.ChangeTag:
@@ -162,6 +172,7 @@ namespace Pixeye.Framework
 
 						ref var componentsToActivate = ref CoreEntity.components[entityID];
 						var lenToActivate = componentsToActivate.length;
+
 						for (int j = 0; j < lenToActivate; j++)
 						{
 							ref var component = ref componentsToActivate.GetComponent(j);
@@ -170,6 +181,7 @@ namespace Pixeye.Framework
 
 							CoreEntity.generations[entityID, generationActivate] |= maskActivate;
 							components = Storage.all[component];
+
 							for (int l = 0; l < components.lenOfGroups; l++)
 							{
 								var group = components.groupsOfInterest[l];
