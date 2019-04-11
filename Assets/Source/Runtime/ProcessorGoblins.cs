@@ -78,7 +78,7 @@ namespace Pixeye
 				var cState = entity.ComponentState();
 				if (frames % 20 == 0)
 				{
-					сMove.distanceToTarget = сMove.distanceToTarget.Minus(1);
+					сMove.distanceToTarget.Minus(1);
 
 					Debug.Log(String.Format("Goblin with id {0} moves to target. {1} meters left!", entity.id, сMove.distanceToTarget));
 

@@ -25,7 +25,7 @@ namespace Pixeye
 			{
 				// create new player
 
-				var entity = ent.CreateFrom("Obj Player");
+				var entity = ent.CreateFor("Obj Player");
 				entity.AddMonoReference();
 
 				var cPlayer = entity.Add<ComponentPlayer>();
