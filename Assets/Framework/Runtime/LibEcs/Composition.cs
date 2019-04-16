@@ -2,8 +2,8 @@
 //  Contacts : Pixeye - ask@pixeye.games
 
 using System;
+using System.Runtime.CompilerServices;
 using Unity.IL2CPP.CompilerServices;
-using UnityEngine;
 
 namespace Pixeye.Framework
 {
@@ -16,6 +16,8 @@ namespace Pixeye.Framework
 
 		internal int[] generations = new int[0];
 		internal int[] ids = new int[0];
+
+		internal bool[] components = new bool[SettingsEngine.SizeComponents];
 
 		public override bool Equals(object obj)
 		{
@@ -46,13 +48,26 @@ namespace Pixeye.Framework
 			return hc;
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal bool OverlapComponents(in BufferComponents entityComponents)
+		{
+			int match = 0;
+			for (int i = 0; i < entityComponents.Length; i++)
+			{
+				if (components[entityComponents.components[i]])
+					match++;
+			}
+
+			return ids.Length == match;
+		}
+
 		internal bool Include(int entityID)
 		{
-			ref var tags = ref CoreEntity.tags[entityID];
+			ref var tags = ref Entity.tags[entityID];
 			var length = tags.GetLength();
 			if (length == 0) return false;
 			var match = 0;
-		 
+
 			for (int l = 0; l < tagsToInclude.Length; l++)
 			{
 				var tagToInclude = tagsToInclude[l];
@@ -68,7 +83,7 @@ namespace Pixeye.Framework
 
 		internal bool Exclude(int entityID)
 		{
-			ref var tags = ref CoreEntity.tags[entityID];
+			ref var tags = ref Entity.tags[entityID];
 			var length = tags.GetLength();
 			if (length == 0) return true;
 
@@ -84,26 +99,6 @@ namespace Pixeye.Framework
 
 			return true;
 		}
-
-//			ref var tags    = ref CoreEntity.tags[entityID];
-//			ref var storage = ref tags.pool;
-//			if (storage == null) return false;
-//
-//			var length = tags.length;
-//			if (length == 0) return false;
-//			length -= 1;
-//			for (int i = 0; i < tagsToExclude.Length; i++)
-//			{
-//				var tagID = tagsToExclude[i];
-//				for (int ii = 0; ii < length; ii++)
-//				{
-//					if (storage[ii].id != tagID) continue;
-//					return false;
-//				}
-//			}
-
-		//	return true;
-		//	}
 
 		public bool Equals(Composition other)
 		{

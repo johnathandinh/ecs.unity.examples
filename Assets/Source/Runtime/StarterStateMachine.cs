@@ -20,7 +20,7 @@ namespace Pixeye
 
 		protected override void PostSetup()
 		{
-			this.Spawn("Obj Goblin", Vector3.zero, Quaternion.identity);
+			Actor.Create("Obj Goblin");
 		}
 
 	}

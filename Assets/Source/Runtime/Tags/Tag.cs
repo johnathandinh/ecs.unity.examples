@@ -6,7 +6,7 @@ using Pixeye.Framework;
 
 namespace Pixeye
 {
-	public static class Tag
+	public class Tag : ITag
 	{
 
 		/// Tags are used to define object states.

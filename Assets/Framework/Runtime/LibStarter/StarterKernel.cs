@@ -14,20 +14,31 @@ namespace Pixeye.Framework
 	{
 
 		[FoldoutGroup("SetupData")]
-		public DataGame gameSession;
+		public DataSession gameSession;
 
 		[FoldoutGroup("SetupData")]
-		public DataGame gameSettings;
+		public DataSession gameSettings;
 
 		[FoldoutGroup("SetupData")]
 		public List<Pluggable> pluggables = new List<Pluggable>();
 
 		[FoldoutGroup("Settings")]
 		public int sizeEntities = 2048;
+		[FoldoutGroup("Settings")]
+		public int sizeComponents = 256;
+
+		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+		void PreStart()
+		{
+			SettingsEngine.SizeEntities = sizeEntities;
+			SettingsEngine.SizeComponents = sizeComponents;
+		}
 
 		void Awake()
 		{
-			SettingsEngine.SizeEntities = sizeEntities;
+			
+			
+			
 			
 			for (var i = 0; i < pluggables.Count; i++)
 			{
@@ -35,13 +46,20 @@ namespace Pixeye.Framework
 			}
 
 			if (gameSession != null)
+			{
 				Toolbox.Add(gameSession);
+			}
 			if (gameSettings != null)
 			{
 				Toolbox.Add(gameSettings);
 			}
 
 			HandleFastPool<Timer>.Instance.Populate(50);
+			
+			
+			
+			
+			
 		}
 
 		IEnumerator OnApplicationFocus(bool hasFocus)

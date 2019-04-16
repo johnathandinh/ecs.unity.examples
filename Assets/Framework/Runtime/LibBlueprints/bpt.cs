@@ -1,28 +1,32 @@
 //  Project : ecs
 // Contacts : Pix - ask@pixeye.games
 
-using UnityEngine;
-
 namespace Pixeye.Framework
 {
 	public readonly struct bpt
 	{
+		public readonly int hash;
 
-		public readonly int id;
-
-		public bpt(int id = 0)
+		public bpt(int hash)
 		{
-			this.id = id;
+			this.hash = hash;
 		}
 
-		static public implicit operator int(bpt value)
+		static public implicit operator BlueprintEntity(bpt value)
 		{
-			return value.id;
+			return BlueprintEntity.storage[value.hash];
 		}
 
-		static public implicit operator bpt(int value)
+		static public implicit operator bpt(string value)
 		{
-			return new bpt(value);
+			var hash = value.GetHashCode();
+			if (!BlueprintEntity.storage.TryGetValue(hash, out BlueprintEntity bp))
+			{
+				bp = Box.Get<BlueprintEntity>(value);
+				BlueprintEntity.storage.Add(hash, bp);
+			}
+
+			return new bpt(hash);
 		}
 
 	}
@@ -30,17 +34,9 @@ namespace Pixeye.Framework
 	public static class HelperBlueprints
 	{
 
-		public static BlueprintEntity Create(ref this bpt blueprint, string name = default)
+		public static BlueprintEntity Get(in this bpt value)
 		{
-			var id = name == default ? blueprint.id : name.GetHashCode();
-			var bp = ScriptableObject.CreateInstance<BlueprintEntity>();
-
-			if (name != default)
-				blueprint = id;
-
-			BlueprintEntity.storage.Add(id, bp);
-
-			return bp;
+			return BlueprintEntity.storage[value.hash];
 		}
 
 	}

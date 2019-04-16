@@ -31,7 +31,7 @@ namespace Pixeye
 //			composer.Add<ComponentTurret>();
 //			composer.Deploy();
 
-			var entity = ent.Create();
+			var entity = Entity.Create();
 			entity.Add<ComponentTurret>();
 		}
 
