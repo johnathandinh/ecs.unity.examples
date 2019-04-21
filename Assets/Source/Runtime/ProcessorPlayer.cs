@@ -10,27 +10,24 @@ namespace Pixeye
 	public class ProcessorPlayer : Processor, ITick
 	{
 
-		public static Group<ComponentPlayer, ComponentObject> group_players;
-		public Group<ComponentPlayer, ComponentWeapon, ComponentObject> group_players_armed;
+		public static Group<ComponentPlayer> group_players;
+		public Group<ComponentPlayer, ComponentWeapon> group_players_armed;
 
-		public ProcessorPlayer()
-		{
-		}
-
+		 
 		public void Tick()
 		{
 			foreach (var entity in group_players)
 			{
 				var cPlayer = entity.ComponentPlayer();
 
-				Debug.Log(string.Format("{0} with id {1}", cPlayer.name, entity));
+				Debug.Log(string.Format("{0} with id {1}", cPlayer.name, entity.id));
 			}
 
 			foreach (var entity in group_players_armed)
 			{
 				var cPlayer = entity.ComponentPlayer();
 				var cWeapon = entity.ComponentWeapon();
-				Debug.Log(string.Format("{0} with id {1} holds {2}", cPlayer.name, entity, cWeapon.name));
+				Debug.Log(string.Format("{0} with id {1} holds {2}", cPlayer.name, entity.id, cWeapon.name));
 			}
 		}
 
